@@ -9,15 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Print
-      run: echo "Hi started Github Actions"
+      - name: Print
+        run: echo "Hi started Github Actions"
 
-    - name: Repo name
-      run: echo "Repository name is ${{ github.repository }}"
+      - name: Repo name
+        run: echo "Repository name is ${{ github.repository }}"
 
-    - name: Branch name
-      run: echo "Branch name is ${{ github.ref_name }}"
+      - name: Branch name
+        run: echo "Branch name is ${{ github.ref_name }}"
