@@ -16,10 +16,10 @@ env:
   run: echo "APP_MODE at global level is $APP_MODE"
 
 jobs:
-env:
-  APP_MODE: 'job-level'
   env_precedence_job:
     runs-on: ubuntu-latest
+    env:
+    APP_MODE: 'job-level'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
