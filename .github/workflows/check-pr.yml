@@ -1,0 +1,25 @@
+name: CHeck PR Workflow
+on: 
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  pr-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: print PR no.
+        run:
+          echo "PR num is ${{github.event.pull_request.number}}"
+
+      - name: print source branch
+        run: 
+          echo "Source branch ${{github.head_ref}}"
+
+      - name: print target branch
+        run:
+          echo "Target branch ${{github.base_ref}}"
