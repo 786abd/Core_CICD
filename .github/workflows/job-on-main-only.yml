@@ -1,0 +1,14 @@
+name: Job on Main Only
+on:
+  push:
+    branches:
+      - main
+      - dev
+jobs:
+  main-only:
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'main'
+    steps:
+      run: echo "Job is running on main branch"
+
+      
