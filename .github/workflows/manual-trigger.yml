@@ -30,5 +30,3 @@ jobs:
       - name: Print Debug Mode using condition
         if: ${{ github.event.inputs.debug == true }}
         run: echo "Debug mode is enabled"
-        else:
-          echo "Debug mode is disabled"
