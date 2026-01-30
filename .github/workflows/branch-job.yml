@@ -1,0 +1,22 @@
+name: Branch Job Workflow
+on:
+  push:
+    branches:
+      - main 
+      - dev
+
+jobs:
+  branch-check:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: print branch name
+        run: 
+          echo "${{github.ref_name}}"
+
+      - name: print commit sha
+        run:
+          echo "${{github.sha}}"
