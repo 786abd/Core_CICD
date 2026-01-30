@@ -1,0 +1,24 @@
+name: Job Dependency Workflow
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build Step
+        run: echo "Build completed"
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Test step
+        if: ${{needs.build.result == success}}
+        run: echo "Test is on going"
