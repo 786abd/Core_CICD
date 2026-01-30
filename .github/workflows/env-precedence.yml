@@ -1,0 +1,33 @@
+name: Env precedence Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select the env'
+        required: true
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+env:
+  APP_MODE: 'global'
+  run: echo "APP_MODE at global level is $APP_MODE"
+
+jobs:
+env:
+  APP_MODE: 'job-level'
+  env_precedence_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Print Job level env here
+        run: echo "APP_MODE at job level is $APP_MODE"
+
+      - name: Print Step level env here 
+        env:
+          APP_MODE: 'step-level'
+        run: echo "APP_MODE at step level is $APP_MODE"
