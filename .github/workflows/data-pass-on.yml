@@ -1,0 +1,20 @@
+name: Data Pass On Workflow
+on: 
+  workflow_dispatch:
+jobs:
+  generator:
+    runs-on: ubuntu-latest
+    outputs:
+      data: ${{ steps.generate.outputs.data }}
+    steps:
+      - name: Generate Data
+        id: generate
+        run: |
+          echo "data= Greets from generator" >> $GITHUB_OUTPUT
+
+  consumer:
+    needs: generator
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consume data
+        run: echo "Data from generator: ${{needs.generator.output.data}}"
