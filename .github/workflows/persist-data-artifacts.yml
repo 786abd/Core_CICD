@@ -1,0 +1,30 @@
+name: Persist data using artifacts
+on:
+  workflow_dispatch:
+jobs:
+  producer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Create file
+        run:
+          echo "Build successful" > build.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: build.txt
+  
+  consumer:
+    runs-on: ubuntu-latest
+    needs: producer
+    steps: 
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+
+      - name: Print artifact
+        run: cat build.txt
