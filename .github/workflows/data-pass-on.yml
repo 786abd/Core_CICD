@@ -17,4 +17,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Consume data
-        run: echo "Data from generator: ${{needs.generator.output.data}}"
+        run: |
+          echo "Received data: ${{ needs.generator.outputs.data }}"
