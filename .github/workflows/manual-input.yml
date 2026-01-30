@@ -1,0 +1,23 @@
+name: Manual Input Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      run_tests:
+        boolean: true
+        default: false
+
+jobs:
+  conditional-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Print message
+        run: echo "Build started"
+
+      - name: Run Tests
+        if: ${{github.event.inputs.run_tests == true}}
+        run: echo "Running tests"
+        if: ${{github.event.inputs.run_tests == false}}
+        run: echo "Skipping tests"
