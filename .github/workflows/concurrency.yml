@@ -1,0 +1,22 @@
+name: Concurrency Control Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+concurrency:
+    group: ${{github.workflow}}-${{github.ref_name}}
+    cancel-in-progress: true
+
+jobs:
+  concurrent-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Print Message
+        run: echo "Running latest workflow on branch ${{github.ref_name}}"
