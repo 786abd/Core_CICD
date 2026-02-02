@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/786abd/Core_CICD/compare/v1.0.0...v1.0.1) (2026-02-02)
+
+
+### Bug Fixes
+
+* Fix commit ([fb4250f](https://github.com/786abd/Core_CICD/commit/fb4250f8b066f5b01f701f6fcce9be8708f76147))
+
 ## 1.0.0 (2026-02-02)
 
 
