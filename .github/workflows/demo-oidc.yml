@@ -1,7 +1,7 @@
 name: OIDC WF
 on:
   push:
-    branch:
+    branches:
       - main
 
 permissions:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Login to aws
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::050451380877:role/github-aws-oidc
           aws-region: us-west-1
