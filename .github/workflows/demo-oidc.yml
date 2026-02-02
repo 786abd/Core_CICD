@@ -1,0 +1,26 @@
+name: OIDC WF
+on:
+  push:
+    branch:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  create-file-in-ec2:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to aws
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::050451380877:role/github-aws-oidc
+          aws-region: us-west-1
+
+      - name: verify identity
+        run: aws sts get-caller-identity
